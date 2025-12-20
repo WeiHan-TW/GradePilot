@@ -5,7 +5,7 @@ const res = await fetch(`${API_BASE}/api/me`, {
     credentials: "include",
 })
 const data = await res.json();
-if(!res.logged_in) window.location.href = "/";
+if(!data.logged_in) window.location.href = "/";
 
 async function logout() {
     const r = await fetch(`${API_BASE}/api/logout`, {

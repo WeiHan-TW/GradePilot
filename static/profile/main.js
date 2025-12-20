@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         credentials: "include",
     })
     const data = await res.json();
-    if(!res.logged_in) window.location.href = "/";
+    if(!data.logged_in) window.location.href = "/";
     name.value = data.username;
 
     change_btn.addEventListener("click",async () => {
