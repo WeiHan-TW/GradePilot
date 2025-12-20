@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if(password.value == "") alert("請先輸入密碼")
         else{
             try{
-                const response = await fetch(`${window.API_BASE}/login`, {
+                const response = await fetch(`${window.API_BASE}/api/login`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json", // 告訴後端：body 是 JSON

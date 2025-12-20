@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     login_btn.addEventListener("click", async() => {
         event.preventDefault(); // ⬅️ 阻止原本的表單直接 POST /login 重新整理頁面
         try{
-            const response = await fetch(`${window.API_BASE}/login`, {
+            const response = await fetch(`${window.API_BASE}/api/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // 告訴後端：body 是 JSON
