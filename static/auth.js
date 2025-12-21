@@ -11,13 +11,14 @@ export function clearToken() {
     localStorage.removeItem(TOKEN_KEY);
 }
 
-export function authHeaders(extra = {}) {
+export function authHeaders(extra = {}) { //extra為想放的headers
     const token = getToken();
-    return token ? { ...extra, Authorization: `Bearer ${token}` } : extra;
+    if(token) return { ...extra, Authorization: `Bearer ${token}` };
+    else return extra;
 }
 
 export async function api(path, options = {}) {
-    const res = await fetch(`${window.API_BASE}${path}`, {
+    const res = await fetch(`${window.API_BASE}${path}`, { //不用在加api_base
         ...options,
         headers: authHeaders(options.headers || {}),
     });
@@ -59,7 +60,7 @@ export async function change_password(name, current_password, new_password) {
         current_password: current_password,
         new_password: new_password,
     };
-    const res = await fetch(`${window.API_BASE}/api/me/password`, { method: "PATCH",headers:{"Content-Type": "application/json"}, body : JSON.stringify(payload),});
+    const res = await api("/api/me/password", { method: "PATCH",headers:{"Content-Type": "application/json"}, body : JSON.stringify(payload),});
     const data = await res.json();
     if (!data.ok) return { ok: false, error: data.error };
     return { ok: true, data };
