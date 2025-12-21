@@ -23,18 +23,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     function change() {
         if(!is_changing){
             //value
-            name.value = data.username;
             new_password.value = "";
             new_confirm.value = "";
             //readOnly
-            name.readOnly = true;
             password.readOnly = false;
             //display
             changeArea.style.display = "none";
         }else{
             //readOnly
             password.readOnly = true;
-            name.readOnly = false;
             changeArea.style.display = "block";
         }
     }
@@ -69,12 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     confirm_btn.addEventListener("click",async () => {
-        let res = validateNoEmptyNoSpace(name.value);
-        if (!res.ok) {
-            alert("帳戶名稱"+r.message);
-            return;
-        }
-        res = validateNoEmptyNoSpace(new_password.value);
+        let res = validateNoEmptyNoSpace(new_password.value);
         if (!res.ok) {
             alert("密碼"+res.message);
             return;
