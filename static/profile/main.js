@@ -1,3 +1,6 @@
+import { requireLogin } from "./auth.js";
+import { login } from "./auth.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     //按鈕
     const change_btn = document.getElementById("change");
@@ -35,12 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     //抓取資料
-    const res = await fetch(`${API_BASE}/api/me`, {
-        method: "GET",
-        credentials: "include",
-    })
-    const data = await res.json();
-    if(!data.logged_in) window.location.href = "/";
+    const data = requireLogin();
     name.value = data.username;
 
     change_btn.addEventListener("click",async () => {
@@ -51,23 +49,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if(password.value == "") alert("請先輸入密碼")
         else{
             try{
-                const response = await fetch(`${window.API_BASE}/api/login`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json", // 告訴後端：body 是 JSON
-                    },
-                    body: JSON.stringify({
-                        name: name.value,
-                        password: password.value,
-                    }),
-                });
-                const data = await response.json();
+                const response = login(name.value, password.value);
 
-                if (data.ok) {
+                if (response.ok) {
                     is_changing = true;
                     change();
                 } else {
-                    alert(data.message)
+                    alert(response.data.message)
                 }
             } catch (err) {
                 console.error(err);
