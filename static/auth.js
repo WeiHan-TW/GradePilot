@@ -49,7 +49,6 @@ export async function login(name, password) {
 }
 
 export function logout(redirectTo = "/") {
-    console.log("logout");
     clearToken();
     window.location.href = redirectTo;
 }
