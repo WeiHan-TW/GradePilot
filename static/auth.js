@@ -53,6 +53,18 @@ export function logout(redirectTo = "/") {
     window.location.href = redirectTo;
 }
 
+export async function change_password(name, current_password, new_password) {
+    const payload = {
+        name: name,
+        current_password: current_password,
+        new_password: new_password,
+    };
+    const res = await fetch(`${window.API_BASE}/api/me/password`, { method: "PATCH",headers:{"Content-Type": "application/json"}, body : JSON.stringify(payload),});
+    const data = await res.json();
+    if (!data.ok) return { ok: false, error: data.error };
+    return { ok: true, data };
+}
+
 //loading
 
 export function showLoading() {

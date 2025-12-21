@@ -1,7 +1,7 @@
 import { requireLogin } from "../auth.js";
 import { login } from "../auth.js";
 import { showLoading, hideLoading } from "../auth.js";
-import { validateNoEmptyNoSpace } from "../auth.js";
+import { validateNoEmptyNoSpace, change_password } from "../auth.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     //按鈕
@@ -75,6 +75,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             alert("密碼不相同")
             return;
         }
-        console.log("okok");
+        res = change_password(name, password, new_password);
+        if(!res.ok){
+            alert(res.error);
+        }else{
+            alert("用戶資訊已變更完成");
+        }
     })
 });
