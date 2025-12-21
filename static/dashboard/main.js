@@ -2,6 +2,7 @@ import { logout } from "../auth.js";
 import { requireLogin } from "../auth.js";
 
 await requireLogin();
+console.log("ok");
 
 document.addEventListener("DOMContentLoaded", () => {
     const logout_btn = document.getElementById("logout");
