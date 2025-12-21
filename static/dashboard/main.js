@@ -5,7 +5,7 @@ await requireLogin();
 console.log("ok");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const logout_btn = document.getElementById("logout");
+    const logout_btn = document.getElementById("logout_btn");
     logout_btn.addEventListener("click", async() => {
         console.log("click");
         logout()
