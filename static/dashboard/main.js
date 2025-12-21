@@ -3,9 +3,10 @@ import { requireLogin } from "../auth.js";
 
 const res = requireLogin();
 
-async function btn_logout() {
-    logout();
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const logout_btn = document.getElementById("logoutBtn");
+    logout_btn.addEventListener("click", async() => {logout()});
+})
 
 /*
 async function logout_btn() {
