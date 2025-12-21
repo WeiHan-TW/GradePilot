@@ -3,6 +3,10 @@ import { requireLogin } from "../auth.js";
 
 const res = requireLogin();
 
+async function btn_logout() {
+    logout();
+}
+
 /*
 async function logout_btn() {
     const r = await fetch(`${window.API_BASE}/api/logout`, {
