@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             alert("密碼"+res.message);
             return;
         }
-        if(new_password.value != new_confirm){
+        if(new_password.value != new_confirm.value){
             alert("密碼不相同")
             return;
         }
