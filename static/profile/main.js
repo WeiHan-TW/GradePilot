@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const changeArea = document.getElementById("change-area");
 
     //輸入部分
-    const name = document.getElementById("name");
+    const username = document.getElementById("username");
     const password = document.getElementById("password");
     const new_password = document.getElementById("new_password");
     const new_confirm = document.getElementById("new_confirm");
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if(password.value == "") alert("請先輸入密碼")
         else{
             try{
-                const response = await login(name.value, password.value);
+                const response = await login(username.value, password.value);
 
                 if (response.ok) {
                     is_changing = true;
@@ -66,23 +66,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     confirm_btn.addEventListener("click",async () => {
-        let res = validateNoEmptyNoSpace(new_password.value);
-        if (!res.ok) {
-            alert("密碼"+res.message);
-            return;
+        try{
+            let res = validateNoEmptyNoSpace(new_password.value);
+            if (!res.ok) {
+                alert("密碼"+res.message);
+                return;
+            }
+            if(new_password.value != new_confirm.value){
+                alert("密碼不相同")
+                return;
+            }
+            showLoading();
+            res = await change_password(username.value, password.value, new_password.value);
+            hideLoading();
+            if(!res.ok){
+                alert(res.error);
+            }else{
+                alert("用戶資訊已變更完成");
+                window.location.href = "/profile";
+            }
         }
-        if(new_password.value != new_confirm.value){
-            alert("密碼不相同")
-            return;
-        }
-        showLoading();
-        res = await change_password(name.value, password.value, new_password.value);
-        hideLoading();
-        if(!res.ok){
-            alert(res.error);
-        }else{
-            alert("用戶資訊已變更完成");
-            window.location.href = "/profile";
+        catch {err} {
+            console.error(err);
+                alert("系統錯誤，請稍後再試");
+                hideLoading();
         }
     })
 });

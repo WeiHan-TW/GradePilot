@@ -36,10 +36,10 @@ export async function requireLogin(redirectTo = "/") {
     return data; // {logged_in, username}
 }
 
-export async function login(name, password) {
+export async function login(username, password) {
     console.log(window.API_BASE);
     const payload = {
-        name: name,
+        username: username,
         password: password,
     };
     const res = await fetch(`${window.API_BASE}/api/login`, { method: "POST",headers:{"Content-Type": "application/json"}, body : JSON.stringify(payload),});
