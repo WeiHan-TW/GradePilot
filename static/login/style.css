@@ -10,11 +10,43 @@
 /* 讓三個 label 有固定寬度，input 就會對齊成直線 */
 .form-row label {
   display: inline-block;   /* 讓 label 可以設定寬度 */
-  width: 180px;            /* 自己調到你覺得漂亮的寬度 */
+  width: 100px;            /* 自己調到你覺得漂亮的寬度 */
 }
 
 .form-row input {
   padding: 4px 6px;
+}
+
+.input{
+  width: 75%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #111827;
+  font-size: 15.5px;
+  line-height: 1.2;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .06s ease;
+}
+
+.input::placeholder{
+  color: #9ca3af;
+}
+
+.input:focus{
+  border-color: rgba(37,99,235,.55);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.18), 0 10px 24px rgba(17,24,39,.08);
+}
+
+.input:active{
+  transform: translateY(0.5px);
+}
+
+.input:disabled{
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
 
 :root{
@@ -52,7 +84,7 @@ body{
 
 /* 卡片 */
 .card{
-  width:min(330px, 100%);
+  width:min(500px, 100%);
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
