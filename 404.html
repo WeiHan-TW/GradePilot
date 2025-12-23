@@ -9,6 +9,56 @@
     <script src="./static/404/main.js" type="module"></script>
 </head>
 <body>
-    <h1>NOT FOUND 404</h1>
+  <div class="orbs" aria-hidden="true">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <main class="wrap">
+    <section class="card" role="region" aria-label="404 Not Found">
+      <div class="left">
+        <div class="badge">
+          <span class="dot"></span>
+          <span>404 · Not Found</span>
+        </div>
+
+        <h1>糟糕，這頁走丟了。</h1>
+        <p>
+          你要找的頁面可能已被移動、改名，或暫時不可用。
+          你可以回到首頁，或回上一頁再試一次。
+        </p>
+
+        <div class="actions">
+          <!-- 改成你的首頁路徑 -->
+          <a class="btn primary" href="/">
+            <span>回到首頁</span>
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <button class="btn" type="button" onclick="history.back()">
+            <span aria-hidden="true">←</span>
+            <span>回上一頁</span>
+          </button>
+
+          <!-- 可選：站內搜尋 / 聯絡我們 -->
+          <!-- <a class="btn" href="/contact">聯絡我們</a> -->
+        </div>
+
+        <div class="hint">
+          小提示：按 <span class="kbd">Alt</span> + <span class="kbd">←</span> 也能回上一頁
+        </div>
+      </div>
+
+      <div class="right" aria-hidden="true">
+        <div class="scan"></div>
+        <div class="num">404</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    如果你覺得這是錯誤連結，請回報給網站管理員。
+  </footer>
 </body>
-</html>
+
