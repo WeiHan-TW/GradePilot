@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const signup_btn = document.getElementById("signup");
 
     signup_btn.addEventListener("click",async () => {
+        /*
         let res = validateNoEmptyNoSpace(name.value);
         if (!res.ok) {
             alert("帳戶名稱"+r.message);
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             confirm.value = "";
             password.value = "";
         }
-        else{
+        else{*/
             const response = await fetch(`${window.API_BASE}/api/echo`, {
                 method: "POST",
                 headers: {
@@ -41,6 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }else{
                 alert(result.message);
             }
-        }
+        //}
     });
 });
