@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     signup_btn.addEventListener("click",async () => {
         let res = validateNoEmptyNoSpace(name.value);
         if (!res.ok) {
-            alert("帳戶名稱"+r.message);
+            alert("帳戶名稱"+res.message);
             return;
         }
         res = validateNoEmptyNoSpace(password.value);
         if (!res.ok) {
-            alert("密碼"+r.message);
+            alert("密碼"+res.message);
             return;
         }
         else if(password.value != confirm.value){
