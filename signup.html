@@ -9,29 +9,44 @@
     <script src="./static/signup/main.js" type="module"></script>
 </head>
 <body>
-    <h1>註冊</h1>
 
-    <div class="form">
+    <main class="wrap">
+        <section class="card" role="region" aria-label="404 Not Found">
+            <div class="left">
+                <h1>註冊</h1>
 
-        <div class="form-row">
-            <label for="name">name:</label>
-            <!--   類型        id        name        必填     大小     -->
-            <input type="text" id="name" name="name" required size="10" />
+                <div class="form">
+
+                    <div class="form-row">
+                        <label for="name">name:</label>
+                        <!--   類型        id        name        必填     大小     -->
+                        <input class = "input" type="text" id="name" name="name" required size="10" />
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">password:</label>
+                        <input class = "input" type="password" id="password" name="password" required size="10" />
+                    </div>
+
+                    <div class="form-row">
+                        <label for="confirm">confirm your password:</label>
+                        <input class = "input" type="password" id="confirm" name="confirm" required size="10" />
+                    </div>
+                    
+                    <div class="form-row">
+                        <button id="signup">註冊</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="loading" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:9999;">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:12px;background:#111;color:#fff;">
+            <div style="width:18px;height:18px;border:3px solid #fff;border-right-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+            <div>Loading...</div>
         </div>
-
-        <div class="form-row">
-            <label for="password">password:</label>
-            <input type="password" id="password" name="password" required size="10" />
-        </div>
-
-        <div class="form-row">
-            <label for="confirm">confirm your password:</label>
-            <input type="password" id="confirm" name="confirm" required size="10" />
-        </div>
-        
-        <div class="form-row">
-            <button id="signup">註冊</button>
-        </div>
-
     </div>
+
 </body>
