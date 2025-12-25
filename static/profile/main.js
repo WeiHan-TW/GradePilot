@@ -67,7 +67,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     confirm_btn.addEventListener("click",async () => {
         try{
-            let res = validateNoEmptyNoSpace(new_password.value);
+            let res = validateNoEmptyNoSpace(username.value);
+            if (!res.ok) {
+                alert("帳戶名稱"+res.message);
+                return;
+            }
+            res = validateNoEmptyNoSpace(new_password.value);
             if (!res.ok) {
                 alert("密碼"+res.message);
                 return;
@@ -88,8 +93,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         catch {err} {
             console.error(err);
-                alert("系統錯誤，請稍後再試");
-                hideLoading();
+            alert("系統錯誤，請稍後再試");
+            hideLoading();
         }
     })
 });
