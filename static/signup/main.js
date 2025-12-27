@@ -2,7 +2,7 @@ import { validateNoEmptyNoSpace } from "../auth.js";
 import { showLoading, hideLoading } from "../auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const name = document.getElementById("name");
+    const username = document.getElementById("username");
     const password = document.getElementById("password");
     const confirm = document.getElementById("confirm");
     const signup_btn = document.getElementById("signup");
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signup_btn.addEventListener("click",async () => {
         try{
             showLoading();
-            let res = validateNoEmptyNoSpace(name.value);
+            let res = validateNoEmptyNoSpace(username.value);
             if (!res.ok) {
                 alert("帳戶名稱"+res.message);
                 return;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Content-Type": "application/json", // 告訴後端：body 是 JSON
                     },
                     body: JSON.stringify({
-                        name: name.value,
+                        username: username.value,
                         password: password.value,
                     }),
                 });
