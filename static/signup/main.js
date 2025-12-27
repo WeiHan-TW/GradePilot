@@ -1,4 +1,5 @@
 import { validateNoEmptyNoSpace } from "../auth.js";
+import { showLoading, hideLoading } from "../auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("name");
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     signup_btn.addEventListener("click",async () => {
         try{
+            showLoading();
             let res = validateNoEmptyNoSpace(name.value);
             if (!res.ok) {
                 alert("帳戶名稱"+res.message);
@@ -43,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert(result.error);
                 }
             }
+            hideLoading();
         }catch {err}{
             console.error(err);
             alert("系統錯誤，請稍後再試");
