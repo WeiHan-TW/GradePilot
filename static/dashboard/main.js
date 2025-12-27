@@ -1,7 +1,10 @@
 import { logout } from "../auth.js";
 import { requireLogin } from "../auth.js";
+import { showLoading, hideLoading } from "../auth.js";
 
+showLoading();
 await requireLogin();
+hideLoading();
 
 const logoutBtn = document.getElementById("logout_btn");
 if (!logoutBtn) {

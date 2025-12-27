@@ -12,5 +12,12 @@
     <h1>hello, world!</h1>
     <button id="logout_btn" type="button">登出</button>
     <a href="/profile">基本資料</a>
+
+    <div id="loading" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:9999;">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:12px;background:#111;color:#fff;">
+            <div style="width:18px;height:18px;border:3px solid #fff;border-right-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+            <div>Loading...</div>
+        </div>
+    </div>
 </body>
 </html>
