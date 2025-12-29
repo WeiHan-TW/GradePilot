@@ -1,5 +1,5 @@
-import { get_subject, logout } from "../auth.js";
-import { requireLogin, get_universities } from "../auth.js";
+import { logout } from "../auth.js";
+import { requireLogin, get_universities, get_subject } from "../auth.js";
 import { showLoading, hideLoading } from "../auth.js";
 
 showLoading();
@@ -44,11 +44,11 @@ university_input.addEventListener("blur", () => {
         alert("請從清單選擇");
         university_input.value = "";
     }else{
-        subject_input.type = "text";
         showLoading();
         const data = get_subject(university_input.value);
         hideLoading();
         if(data.ok){
+            subject_input.type = "text";
             data.data.map(x => x.name);
             setDatalist_subject_list(data.data);
         }else{
