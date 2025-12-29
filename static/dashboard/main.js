@@ -13,6 +13,7 @@ const subject_input = document.getElementById("subject_input");
 const subject_list = document.getElementById("subject_list");
 
 function setDatalist_university_list(values) {
+    university_list.innerHTML = ""; 
     university_list.replaceChildren(
         ...values.map(v => {
             const opt = document.createElement("option");
@@ -23,6 +24,7 @@ function setDatalist_university_list(values) {
 }
 
 function setDatalist_subject_list(values) {
+    subject_list.innerHTML = ""; 
     subject_list.replaceChildren(
         ...values.map(v => {
             const opt = document.createElement("option");
