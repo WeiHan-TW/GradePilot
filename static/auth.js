@@ -67,7 +67,7 @@ export async function change_password(name, current_password, new_password) {
 }
 
 export async function get_universities() {
-    const res = await api("/api/me/password", { method: "GET" });
+    const res = await api("/api/universities", { method: "GET" });
     const data = await res.json();
     if (!data.ok) return { ok: false, error: data.error };
     return { ok: true, data: data.data };
