@@ -1,13 +1,26 @@
 import { logout } from "../auth.js";
-import { requireLogin } from "../auth.js";
+import { requireLogin, get_universities } from "../auth.js";
 import { showLoading, hideLoading } from "../auth.js";
 
 showLoading();
 await requireLogin();
+const list = await get_universities();
 hideLoading();
 
 const university_input = document.getElementById("university_input");
 const university_list = document.getElementById("university_list");
+
+list.data.map(x => x[0]);
+
+function setDatalist(values) {
+    university_list.replaceChildren(
+        ...values.map(v => {
+            const opt = document.createElement("option");
+            opt.value = v;          // 注意：datalist 要用 value
+            return opt;
+        })
+    );
+}
 
 function isValid(val){
     return Array.from(university_list.options).some(o => o.value === val);
@@ -28,3 +41,5 @@ if (!logoutBtn) {
         logout();
     });
 }
+
+setDatalist(list.data);
