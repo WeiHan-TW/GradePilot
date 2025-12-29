@@ -38,14 +38,14 @@ function isValid(val){
     return Array.from(university_list.options).some(o => o.value === val);
 }
 
-university_input.addEventListener("blur", () => {
+university_input.addEventListener("blur", async() => {
     if (university_input.value && !isValid(university_input.value.trim())) {
         subject_input.type = "hidden";
         alert("請從清單選擇");
         university_input.value = "";
     }else{
         showLoading();
-        const data = get_subjects(university_input.value);
+        const data = await get_subjects(university_input.value);
         hideLoading();
         if(data.ok){
             subject_input.type = "text";
