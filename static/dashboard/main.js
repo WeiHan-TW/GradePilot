@@ -1,4 +1,4 @@
-import { logout } from "../auth.js";
+import { get_information, logout } from "../auth.js";
 import { requireLogin, get_universities, get_subjects } from "../auth.js";
 import { showLoading, hideLoading } from "../auth.js";
 
@@ -34,13 +34,13 @@ function setDatalist_subject_list(values) {
     );
 }
 
-function isValid(val){
-    return Array.from(university_list.options).some(o => o.value === val);
+function isValid(list, val){
+    return Array.from(list.options).some(o => o.value === val);
 }
 
 university_input.addEventListener("blur", async() => {
     subject_input.value = "";
-    if (university_input.value && !isValid(university_input.value.trim())) {
+    if (university_input.value && !isValid(university_list, university_input.value.trim())) {
         subject_input.type = "hidden";
         alert("請從清單選擇");
         university_input.value = "";
@@ -52,6 +52,22 @@ university_input.addEventListener("blur", async() => {
             subject_input.type = "text";
             const names = data.data.map(x => x.name);
             setDatalist_subject_list(names);
+        }else{
+            alert(data.error);
+        }
+    }
+});
+
+subject_input.addEventListener("blur", async() => {
+    if (subject_input.value && !isValid(subject_list, subject_input.value.trim())) {
+        alert("請從清單選擇");
+        subject_input.value = "";
+    }else if(subject_input.value){
+        showLoading();
+        const data = await get_information(university_input.value.trim(), subject_input.value.trim());
+        hideLoading();
+        if(data.ok){
+            console.log(data.data);
         }else{
             alert(data.error);
         }

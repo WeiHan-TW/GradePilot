@@ -80,6 +80,13 @@ export async function get_subjects(university) {
     return { ok: true, data: data.data };
 }
 
+export async function get_information(university, subject) {
+    const res = await api(`/api/${university}/${subject}/information`, { method: "GET" });
+    const data = await res.json();
+    if (!data.ok) return { ok: false, error: data.error };
+    return { ok: true, data: data.data };
+}
+
 //loading
 
 export function showLoading() {
