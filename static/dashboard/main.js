@@ -58,6 +58,8 @@ university_input.addEventListener("blur", async() => {
     }
 });
 
+const result = document.getElementById("result");
+
 subject_input.addEventListener("blur", async() => {
     if (subject_input.value && !isValid(subject_list, subject_input.value.trim())) {
         alert("請從清單選擇");
@@ -68,6 +70,42 @@ subject_input.addEventListener("blur", async() => {
         hideLoading();
         if(data.ok){
             console.log(data.data);
+            result.innerHTML = `
+            <div class="card">
+                <h2>${row.university_name}</h2>
+                <h3>${row.department_name}</h3>
+
+                <div class="info-row">
+                <div class="label">年度</div>
+                <div class="value">${row.year}</div>
+                </div>
+
+                <div class="info-row">
+                <div class="label">校系代碼</div>
+                <div class="value">${row.dept_code}</div>
+                </div>
+
+                <div class="info-row">
+                <div class="label">招生名額</div>
+                <div class="value">${row.quota}</div>
+                </div>
+
+                <div class="info-row">
+                <div class="label">最低錄取分數</div>
+                <div class="value">${row.cut_off_score}</div>
+                </div>
+
+                <div class="info-row">
+                <div class="label">加權方式</div>
+                <div class="value">${row.weight}</div>
+                </div>
+
+                <div class="info-row">
+                <div class="label">同分參酌順序</div>
+                <div class="value">${row.tie_breaking_order ?? "無資料"}</div>
+                </div>
+            </div>
+            `;
         }else{
             alert(data.error);
         }

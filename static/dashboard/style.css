@@ -1,1 +1,58 @@
 @keyframes spin { to { transform: rotate(360deg); } }
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans TC", sans-serif;
+    background-color: #f5f6fa;
+    color: #222;
+  }
+  
+  .container {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+  }
+  
+  .card h3 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    color: #444;
+  }
+  
+  .info-row {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .info-row:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    width: 140px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .value {
+    flex: 1;
+  }
