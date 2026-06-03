@@ -70,6 +70,7 @@ subject_input.addEventListener("blur", async() => {
         hideLoading();
         if(data.ok){
             console.log(data.data);
+            let row = data.data;
             result.innerHTML = `
             <div class="card">
                 <h2>${row.university_name}</h2>
